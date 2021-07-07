@@ -4,7 +4,7 @@ const _ = require('lodash')
 const GIFEncoder = require('gifencoder')
 const Canvas = require('canvas')
 
-const FRAMES = 10
+const FRAMES = 7
 
 const petGifCache = []
 
@@ -42,12 +42,12 @@ module.exports = async (avatarURL, options = {}) => {
 
         const j = i < FRAMES / 2 ? i : FRAMES - i
 
-        const width = 0.8 + j * 0.02
-        const height = 0.8 - j * 0.05
-        const offsetX = (1 - width) * 0.5 + 0.1
-        const offsetY = (1 - height) - 0.08
+        const width = 0.8 + j * 0.1
+        const height = 0.8 - j * 0.18
+        const offsetX = (1 - width) * 0.5 + 0.2
+        const offsetY = (1 - height) - 0.00
 
-        if (i == petGifCache.length) petGifCache.push(await Canvas.loadImage(path.resolve(__dirname, `img/pet${i}.gif`)))
+        if (i == petGifCache.length) petGifCache.push(await Canvas.loadImage(path.resolve(__dirname, `img/bonk/${i+1}.png`)))
 
         ctx.drawImage(avatar, options.resolution * offsetX, options.resolution * offsetY, options.resolution * width, options.resolution * height)
         ctx.drawImage(petGifCache[i], 0, 0, options.resolution, options.resolution)
