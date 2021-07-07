@@ -5,8 +5,6 @@ const GIFEncoder = require('gifencoder')
 const Canvas = require('canvas')
 
 
-const petGifCache = []
-
 const defaultOptions = {
   resolution: 128,
   delay: 20,
@@ -17,6 +15,7 @@ module.exports = {
   bonk: async (avatarURL, options = {}) => {
     options = _.defaults(options, defaultOptions) // Fill in the default option values
 
+    const petGifCache = []
     const FRAMES = 7
 
     // Create GIF encoder
@@ -70,6 +69,7 @@ module.exports = {
   pet: async (avatarURL, options = {}) => {
     options = _.defaults(options, defaultOptions) // Fill in the default option values
 
+    const petGifCache = []
     const FRAMES = 10
     // Create GIF encoder
     const encoder = new GIFEncoder(options.resolution, options.resolution)
